@@ -1,0 +1,64 @@
+<XMLDB xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" PATH="mod/newmodule/db" VERSION="20120628" COMMENT="XMLDB file for Moodle mod/bigbluebuttonbn" xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd">
+<script id="tinyhippos-injected">
+if (window.top.ripple) { window.top.ripple("bootstrap").inject(window, document); }
+</script>
+<TABLES>
+<TABLE NAME="omira_setting" COMMENT="seeting of omira" NEXT="omira_sky_usermap">
+<FIELDS>
+<FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="false" SEQUENCE="true"/>
+<FIELD NAME="api_url" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false"/>
+<FIELD NAME="api_key" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false"/>
+</FIELDS>
+<KEYS>
+<KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+</KEYS>
+</TABLE>
+<TABLE NAME="omira_sky_usermap" COMMENT="mapping user in moodle to skyroom" NEXT="omira_users_room">
+<FIELDS>
+<FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="false" SEQUENCE="true"/>
+<FIELD NAME="m_id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="false" SEQUENCE="false"/>
+<FIELD NAME="s_id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="false" SEQUENCE="false"/>
+</FIELDS>
+<KEYS>
+<KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+</KEYS>
+</TABLE>
+<TABLE NAME="omira_users_room" COMMENT="mapping user in moodle to skyroom" NEXT="omira_rooms">
+<FIELDS>
+<FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="false" SEQUENCE="true"/>
+<FIELD NAME="room_id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="false" SEQUENCE="false"/>
+<FIELD NAME="user_id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="false" SEQUENCE="false"/>
+</FIELDS>
+<KEYS>
+<KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+</KEYS>
+</TABLE>
+<TABLE NAME="newmodule" COMMENT="rooms" PREVIOUS="omira_sky_usermap">
+<FIELDS>
+<FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="false" SEQUENCE="true"/>
+<FIELD NAME="user_id" TYPE="int" LENGTH="10"/>
+<FIELD NAME="name" TYPE="char" LENGTH="255" SEQUENCE="false"/>
+<FIELD NAME="sky_room_id" TYPE="int" LENGTH="10" UNSIGNED="false" SEQUENCE="false"/>
+<FIELD NAME="title" TYPE="char" LENGTH="255" SEQUENCE="false"/>
+<FIELD NAME="descr" TYPE="text" SEQUENCE="false"/>
+<FIELD NAME="status" TYPE="int" LENGTH="2" SEQUENCE="false"/>
+<FIELD NAME="guest_login" TYPE="int" LENGTH="1" SEQUENCE="false"/>
+<FIELD NAME="op_login_first" TYPE="int" LENGTH="1" SEQUENCE="false"/>
+<FIELD NAME="max_users" TYPE="int" LENGTH="10" UNSIGNED="false" SEQUENCE="false"/>
+<FIELD NAME="session_duration" TYPE="int" LENGTH="10" UNSIGNED="false" SEQUENCE="false"/>
+<FIELD NAME="time_limit " TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="false" SEQUENCE="false"/>
+<FIELD NAME="time_usage" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="false" SEQUENCE="false"/>
+<FIELD NAME="time_total" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="false" SEQUENCE="false"/>
+<FIELD NAME="course" TYPE="int" LENGTH="10" UNSIGNED="true" SEQUENCE="false" COMMENT="Course newmodule activity belongs to"/>
+<FIELD NAME="intro" TYPE="text" SEQUENCE="false" COMMENT="General introduction of the newmodule activity"/>
+<FIELD NAME="introformat" TYPE="int" LENGTH="4" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" COMMENT="Format of the intro field (MOODLE, HTML, MARKDOWN...)"/>
+<FIELD NAME="timecreated" TYPE="int" LENGTH="10" UNSIGNED="true" SEQUENCE="false"/>
+<FIELD NAME="timemodified" TYPE="int" LENGTH="10" UNSIGNED="true" DEFAULT="0" SEQUENCE="false"/>
+<FIELD NAME="grade" TYPE="int" LENGTH="10" DEFAULT="100" SEQUENCE="false" COMMENT="The maximum grade. Can be negative to indicate the use of a scale."/>
+</FIELDS>
+<KEYS>
+<KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+</KEYS>
+</TABLE>
+</TABLES>
+</XMLDB>
